@@ -2,9 +2,9 @@
 spring:
   config:
     activate:
-      on-profile: dev
+      on-profile: local
   datasource:
-    url: jdbc:mysql://localhost:3306/grida?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/deskmood?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
