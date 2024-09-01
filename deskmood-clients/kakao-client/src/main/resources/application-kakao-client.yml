@@ -1,1 +1,2 @@
-spring.application.name=kakao-client
+kakao:
+  appKey: ${KAKAO_APP_KEY}
