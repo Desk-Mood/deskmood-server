@@ -14,19 +14,9 @@ class KakaoAuthClient(
         redirectUri: String
     ): KakaoAuthToken {
         val response = kakaoAuthApi.provideToken(
-            grantType = "authorization_code",
             clientId = kakaoProperties.appKey,
             redirectUri = redirectUri,
             code = code
-        )
-        return response.toKakaoAuthToken()
-    }
-
-    fun refreshToken(refreshToken: String): KakaoAuthToken {
-        val response = kakaoAuthApi.refreshToken(
-            grantType = "refresh_token",
-            clientId = kakaoProperties.appKey,
-            refreshToken = refreshToken
         )
         return response.toKakaoAuthToken()
     }
