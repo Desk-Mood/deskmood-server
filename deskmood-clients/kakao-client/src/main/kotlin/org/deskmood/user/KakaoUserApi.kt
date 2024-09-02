@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.RequestParam
 @FeignClient(
     name = "KakaoUser",
     url = "https://kapi.kakao.com/v2/user",
+    configuration = [KakaoUserErrorDecoder::class]
 )
 interface KakaoUserApi {
 
-    @GetMapping("/me", headers = ["Content-type=application/x-www-form-urlencoded;charset=utf-8"])
+    @GetMapping(
+        name = "/me?property_keys=[\"kakao_account.profile\"]",
+        headers = ["Content-type=application/x-www-form-urlencoded;charset=utf-8"]
+    )
     fun readUserProfile(
         @RequestHeader("Authorization") bearerToken: String,
-        @RequestParam("property_keys") propertyKeys: String,
         @RequestParam("secure_resource") secureResource: Boolean
     ): KakaoUserProfileResponse
 }
