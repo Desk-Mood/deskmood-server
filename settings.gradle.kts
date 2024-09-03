@@ -9,6 +9,7 @@ include("deskmood-storage:core-db")
 include("deskmood-clients")
 include("deskmood-clients:kakao-client")
 include("deskmood-clients:naver-client")
+include("deskmood-clients:google-client")
 
 include("deskmood-support")
 include("deskmood-support:monitoring")
