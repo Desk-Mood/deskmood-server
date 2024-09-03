@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RequestHeader
 
 @FeignClient(
     name = "NaverUser",
-    url = "https://openapi.naver.com/v1/nid/me"
+    url = "https://openapi.naver.com/v1/nid/me",
+    configuration = [NaverUserErrorDecoder::class]
 )
 interface NaverUserApi {
 
