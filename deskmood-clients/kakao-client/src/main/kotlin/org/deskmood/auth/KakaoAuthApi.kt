@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam
 interface KakaoAuthApi {
 
     @PostMapping(
-        name = "/token?grant_type=authorization_code",
+        path = ["/token?grant_type=authorization_code"],
         headers = ["Content-type=application/x-www-form-urlencoded;charset=utf-8"]
     )
     fun provideToken(

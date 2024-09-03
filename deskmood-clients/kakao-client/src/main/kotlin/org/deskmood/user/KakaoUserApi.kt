@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam
 interface KakaoUserApi {
 
     @GetMapping(
-        name = "/me?property_keys=[\"kakao_account.profile\"]",
+        path = ["/me?property_keys=[\"kakao_account.profile\"]"],
         headers = ["Content-type=application/x-www-form-urlencoded;charset=utf-8"]
     )
     fun readUserProfile(
