@@ -8,9 +8,6 @@ data class NaverUserResponse(
 ) {
 
     fun toNaverUserProfile(): NaverUserProfile {
-        println(response.birthYear)
-        println(response.birthDay)
-        println(response.profileImage)
         return NaverUserProfile(
             response.id,
             response.name,
