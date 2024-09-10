@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestHeader
 
 @FeignClient(
     name = "GoogleUser",
-    url = "https://www.googleapis.com/oauth2/v3/userinfo",
+    url = "https://people.googleapis.com/v1/people/me?personFields=birthdays,genders,emailAddresses,names,photos",
     configuration = [GoogleUserErrorDecoder::class]
 )
 interface GoogleUserApi {

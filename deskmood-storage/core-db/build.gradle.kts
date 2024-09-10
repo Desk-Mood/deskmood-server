@@ -14,7 +14,7 @@ dependencies {
     // kotlin jdsl
     implementation("com.linecorp.kotlin-jdsl:jpql-dsl:3.5.2")
     implementation("com.linecorp.kotlin-jdsl:jpql-render:3.5.2")
-    implementation("com.linecorp.kotlin-jdsl:spring-data-jpa-support:3.5.2")
+    implementation("com.linecorp.kotlin-jdsl:spring-data-jpa-javax-support:3.5.2")
 
     // mysql
     runtimeOnly("com.mysql:mysql-connector-j")
