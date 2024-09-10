@@ -1,0 +1,18 @@
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://172.17.0.1:3100/loki/api/v1/push
+
+scrape_configs:
+  - job_name: log
+    static_configs:
+      - targets:
+          - 172.17.0.1
+        labels:
+          job: log
+          __path__: ./log/*.log
+    pipeline_stages:
+      - multiline:
+          firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+          max_wait_time: 3s
