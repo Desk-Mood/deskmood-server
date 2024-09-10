@@ -20,8 +20,8 @@ class GoogleUserErrorDecoder(
             GoogleUserErrorResponse::class.java
         )
 
-        return when (errorResponse.error) {
-            "invalid_request" -> DeskmoodException(InvalidToken)
+        return when (errorResponse.error.statue) {
+            "UNAUTHENTICATED" -> DeskmoodException(InvalidToken)
             else -> DeskmoodException(GoogleClientError)
         }
     }
