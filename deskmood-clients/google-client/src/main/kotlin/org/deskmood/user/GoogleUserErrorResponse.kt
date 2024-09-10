@@ -1,9 +1,11 @@
 package org.deskmood.user
 
-import com.fasterxml.jackson.annotation.JsonProperty
-
 data class GoogleUserErrorResponse(
-    val error: String,
-    @JsonProperty("error_description")
-    val errorDescription: String
+    val error: GoogleUserError
+)
+
+data class GoogleUserError(
+    val code: String,
+    val message: String,
+    val statue: String
 )
