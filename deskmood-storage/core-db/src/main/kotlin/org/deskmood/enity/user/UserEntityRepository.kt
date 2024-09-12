@@ -32,7 +32,7 @@ class UserEntityRepository(
                 entity(UserEntity::class)
             ).whereAnd(
                 path(UserEntity::platform).eq(oauth.platform),
-                path(UserEntity::platformIdentifier).eq(oauth.identifier)
+                path(UserEntity::email).eq(oauth.email)
             )
         }.firstOrNull()
         return userEntity?.toCoreDomain()

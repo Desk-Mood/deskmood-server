@@ -7,14 +7,13 @@ import org.deskmood.domain.user.UserProfile
 fun User.toEntity(): UserEntity {
     return UserEntity(
         id = id,
-        email = profile.email,
         nickname = profile.nickname,
         birth = profile.birth,
         gender = profile.gender,
         job = profile.job,
         role = role,
         platform = oauth.platform,
-        platformIdentifier = oauth.identifier
+        email = oauth.email,
     )
 }
 
@@ -25,10 +24,9 @@ fun UserEntity.toCoreDomain(): User {
         role = role,
         oauth = Oauth(
             platform = platform,
-            identifier = platformIdentifier
+            email = email
         ),
         profile = UserProfile(
-            email = email,
             nickname = nickname,
             birth = birth,
             gender = gender,
