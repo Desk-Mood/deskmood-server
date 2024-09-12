@@ -6,6 +6,8 @@ dependencies {
     // module dependencies
     implementation(project(":deskmood-core:core-domain"))
     implementation(project(":deskmood-storage:core-db"))
+    implementation(project(":deskmood-clients:google-client"))
+    implementation(project(":deskmood-clients:naver-client"))
     implementation(project(":deskmood-support:logging"))
     implementation(project(":deskmood-support:monitoring"))
 
