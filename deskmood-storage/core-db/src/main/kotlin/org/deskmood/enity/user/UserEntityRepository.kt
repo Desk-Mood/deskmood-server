@@ -25,7 +25,7 @@ class UserEntityRepository(
     }
 
     override fun findByOauth(oauth: Oauth): User? {
-        val userEntity = userJpaRepository.findAll {
+        val userEntity = userJpaRepository.findAll(1, 1) {
             select(
                 entity(UserEntity::class)
             ).from(
@@ -36,5 +36,19 @@ class UserEntityRepository(
             )
         }.firstOrNull()
         return userEntity?.toCoreDomain()
+    }
+
+    override fun existsByNickname(nickname: String): Boolean {
+        val userEntity = userJpaRepository.findAll(1, 1) {
+            select(
+                entity(UserEntity::class)
+            ).from(
+                entity(UserEntity::class)
+            ).whereAnd(
+                path(UserEntity::nickname).eq(nickname)
+            )
+        }.firstOrNull()
+
+        return userEntity?.let { true } ?: false
     }
 }

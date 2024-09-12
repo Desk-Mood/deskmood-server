@@ -4,5 +4,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserService(
-    private val userRepository: UserRepository
-)
+    private val userReader: UserReader,
+) {
+
+    fun isAvailableNickname(nickname: String): Boolean {
+        return !userReader.isInUseNickname(nickname)
+    }
+}
