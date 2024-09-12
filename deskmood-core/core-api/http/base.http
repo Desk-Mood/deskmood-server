@@ -17,3 +17,9 @@ Content-Type: application/json
   "gender": "남성",
   "job": "개발자"
 }
+
+### get basic oauth2 profile
+GET {{core-api}}/api/v1/user/oauth2/profile?
+    platform=google&
+    oauth2Code=4/0AQlEd8wox65EfTuFeyHIaGMLV0lVo4tNAQiSW5Rh-bbrnbZKK9kZUzkPPfk5-yxdAxX2uQ&
+    redirectUri=http://localhost:3000/auth
