@@ -1,8 +1,10 @@
 package org.deskmood.enity.user
 
 import org.deskmood.domain.auth.OauthPlatform
+import org.deskmood.domain.user.Gender
 import org.deskmood.domain.user.UserRole
 import org.deskmood.enity.base.BaseEntity
+import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
@@ -20,7 +22,14 @@ class UserEntity(
     @Column(name = "user_id")
     var id: Long = 0,
 
-    var name: String,
+    val email: String,
+
+    var nickname: String,
+
+    val birth: LocalDate,
+
+    @Enumerated(EnumType.STRING)
+    val gender: Gender,
 
     var job: String,
 
