@@ -1,2 +1,19 @@
 ### health checking api
 GET {{core-api}}/api/health
+
+### check nickname available
+GET {{core-api}}/api/v1/user/nickname/available?
+    nickname=kim
+
+### append user
+POST {{core-api}}/api/v1/user
+Content-Type: application/json
+
+{
+  "email": "wwan13@naver.com",
+  "platform": "naver",
+  "nickname": "김태완",
+  "birth": "2001-02-22",
+  "gender": "남성",
+  "job": "개발자"
+}

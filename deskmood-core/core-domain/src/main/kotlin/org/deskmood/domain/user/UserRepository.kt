@@ -8,4 +8,6 @@ interface UserRepository {
     fun findById(id: Long): User?
 
     fun findByOauth(oauth: Oauth): User?
+
+    fun existsByNickname(nickname: String): Boolean
 }

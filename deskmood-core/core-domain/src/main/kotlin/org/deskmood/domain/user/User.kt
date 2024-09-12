@@ -6,8 +6,7 @@ import org.deskmood.domain.base.Timestamp
 data class User(
     val id: Long = 0,
     val timestamp: Timestamp = Timestamp(),
+    val role: UserRole = UserRole.ROLE_USER,
     val oauth: Oauth,
-    val name: String,
-    val role: UserRole,
-    val job: String
+    val profile: UserProfile,
 )
