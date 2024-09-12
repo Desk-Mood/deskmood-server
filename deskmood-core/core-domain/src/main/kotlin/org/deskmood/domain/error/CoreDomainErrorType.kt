@@ -32,3 +32,10 @@ data class InvalidEnumValue(
     override val message: String = "유효하지 않은 enum value 입니다.[${enumValues.joinToString(",")}]"
     override val logLevel: LogLevel = LogLevel.INFO
 }
+
+data object InUsedNickname : CoreDomainErrorType {
+    override val httpStatusCode: HttpStatus = HttpStatus.BAD_REQUEST
+    override val errorCode: String = "USER_400_0"
+    override val message: String = "이미 사용중인 닉네임 입니다."
+    override val logLevel: LogLevel = LogLevel.INFO
+}

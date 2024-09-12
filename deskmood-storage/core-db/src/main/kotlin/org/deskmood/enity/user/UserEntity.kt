@@ -38,6 +38,4 @@ class UserEntity(
 
     @Enumerated(EnumType.STRING)
     var platform: OauthPlatform,
-
-    var platformIdentifier: String
 ) : BaseEntity()
