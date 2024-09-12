@@ -1,7 +1,7 @@
 package org.deskmood.external.oauth
 
-import org.deskmood.naver.auth.NaverAuthClient
 import org.deskmood.domain.user.Gender
+import org.deskmood.naver.auth.NaverAuthClient
 import org.deskmood.naver.user.NaverUserClient
 import org.springframework.stereotype.Component
 

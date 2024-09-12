@@ -1,7 +1,7 @@
 package org.deskmood.external.oauth
 
-import org.deskmood.google.auth.GoogleAuthClient
 import org.deskmood.domain.user.Gender
+import org.deskmood.google.auth.GoogleAuthClient
 import org.deskmood.google.user.GoogleUserClient
 import org.springframework.stereotype.Component
 
