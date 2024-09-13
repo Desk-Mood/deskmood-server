@@ -16,3 +16,8 @@ spring:
     multipart:
       max-file-size: 100MB
       max-request-size: 100MB
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+  access-token-expired: ${ACCESS_TOKEN_EXPIRED}
+  refresh-token-expired: ${REFRESH_TOKEN_EXPIRED}
