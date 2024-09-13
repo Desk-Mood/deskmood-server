@@ -19,6 +19,10 @@ class UserService(
         return userAppender.append(user)
     }
 
+    fun readByOauth(oauth: Oauth): User {
+        return userReader.readByOauth(oauth)
+    }
+
     fun isAvailableNickname(nickname: String): Boolean {
         return !userReader.isInUseNickname(nickname)
     }
