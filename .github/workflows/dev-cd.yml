@@ -87,5 +87,5 @@ jobs:
           key: ${{ secrets.DEV_REMOTE_PRIVATE_KEY }}
           port: 22
           script: |
-            sudo chmod +x ./deskmood-server/scripts/deploy.sh core-api dev
-            sudo ./deskmood-server/scripts/deploy.sh
+            sudo chmod +x ./deskmood-server/scripts/deploy.sh
+            sudo ./deskmood-server/scripts/deploy.sh core-api dev
