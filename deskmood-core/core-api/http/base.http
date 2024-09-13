@@ -23,3 +23,13 @@ GET {{core-api}}/api/v1/user/oauth2/profile?
     platform=google&
     oauth2Code=4/0AQlEd8wox65EfTuFeyHIaGMLV0lVo4tNAQiSW5Rh-bbrnbZKK9kZUzkPPfk5-yxdAxX2uQ&
     redirectUri=http://localhost:3000/auth
+
+### login
+POST {{core-api}}/api/v1/auth/login?
+    platform=google
+Content-Type: application/json
+
+{
+  "oauth2Code" : "4/0AQlEd8wN5doCsLW3nLS4Oxfao74V3UMNizdwmXoDus_ybhfvSAEckpQ8d1RnkwkWDYwu6g",
+  "redirectUri" : "http://localhost:3000/auth"
+}
