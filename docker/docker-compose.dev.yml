@@ -14,7 +14,7 @@ services:
   client:
     depends_on:
       - core-api
-    image: wwan13/japangi-client:prod
+    image: wwan13/deskmood-client:dev
     container_name: client
     ports:
       - "3010:3010"
