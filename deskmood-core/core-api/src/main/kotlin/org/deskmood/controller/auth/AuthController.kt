@@ -3,6 +3,7 @@ package org.deskmood.controller.auth
 import org.deskmood.api.ApiResponse
 import org.deskmood.auth.AuthTokenProvider
 import org.deskmood.auth.TokenPayload
+import org.deskmood.controller.auth.dto.LoginRequest
 import org.deskmood.controller.auth.dto.LoginResponse
 import org.deskmood.domain.auth.Oauth
 import org.deskmood.domain.auth.OauthPlatform
@@ -10,6 +11,7 @@ import org.deskmood.domain.base.ValueEnum
 import org.deskmood.domain.user.UserService
 import org.deskmood.external.oauth.OauthPlatformSelector
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -25,11 +27,11 @@ class AuthController(
     @PostMapping("/login")
     fun login(
         @RequestParam("platform") platform: String,
-        @RequestParam("oauth2Code") code: String,
-        @RequestParam("redirectUri") redirectUri: String
+        @RequestBody request: LoginRequest
     ): ApiResponse<LoginResponse> {
         val oauthUserProfileReader = oauthPlatformSelector.select(platform)
-        val profile = oauthUserProfileReader.read(code, redirectUri)
+        val profile =
+            oauthUserProfileReader.read(request.oauth2Code, request.redirectUri)
 
         val oauth = Oauth(
             ValueEnum.resolve<OauthPlatform>(platform),
