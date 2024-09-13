@@ -60,8 +60,7 @@ class AuthApiDocsTest(
 
         documentFor(api, "provide-deskmood-auth-token") {
             summary(
-                "Oauth2 플랫폼(구글/네이버) 에서 제공하는 기본 유저 정보를 조회하는 API"
-                    moreAbout "회원가입 전 기본 값을 불러오기 위해 호출하는 API 입니다."
+                "인증 토큰 발급 API" moreAbout "deskmood 서비스에서 사용하는 인증 토큰 발급을 위한 API 입니다."
             )
             queryParameters(
                 "platform" whichMeans "oauth2 플랫폼",
