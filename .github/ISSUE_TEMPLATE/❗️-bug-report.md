@@ -2,7 +2,7 @@
 name: "❗️ Bug report"
 about: 발생한 버그에 대해 알려주세요!
 title: "❗️[BUG] 발생한 버그에 대해 간략히 작성해 주세요"
-labels: bug, queued
+labels: bug
 assignees: wwan13
 
 ---

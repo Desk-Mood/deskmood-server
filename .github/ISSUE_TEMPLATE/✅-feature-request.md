@@ -2,7 +2,7 @@
 name: "✅ Feature request"
 about: 필요한 기능이 무엇인지 알려주세요!
 title: "✅ [FEATURE] 어떤 기능인지 간략히 작성해 주세요."
-labels: feature, queued
+labels: feature
 assignees: wwan13
 
 ---

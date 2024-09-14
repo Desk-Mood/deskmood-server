@@ -2,7 +2,7 @@
 name: "✔️ Chore request"
 about: 배포, 인프라, 설정 등 기타 필요한 작업이 있다면 알려주세요!
 title: "✔️ [CHORE] 어떤 작업이 필요한지 간략히 작성해 주세요."
-labels: chore, queued
+labels: chore
 assignees: wwan13
 
 ---
