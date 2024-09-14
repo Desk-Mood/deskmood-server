@@ -6,6 +6,8 @@ import org.deskmood.domain.auth.OauthPlatform
 import org.deskmood.domain.base.ValueEnum
 import org.deskmood.domain.user.Gender
 import org.deskmood.domain.user.UserProfile
+import org.deskmood.error.InvalidNickname
+import org.deskmood.validator.requestvalidator.RequestValidator.validate
 
 data class UserAppendRequest(
     val platform: String,
@@ -15,6 +17,13 @@ data class UserAppendRequest(
     val gender: String,
     val job: String
 ) {
+
+    init {
+        validate(InvalidNickname) {
+            val regex = Regex("^[가-힣a-zA-Z]{2,10}$")
+            regex.matches(nickname)
+        }
+    }
 
     fun toOauth(): Oauth {
         return Oauth(ValueEnum.resolve<OauthPlatform>(platform), email)
