@@ -21,11 +21,11 @@ META_DATA = {
     },
     "servers": [
         {
-            "url": "https://dev.example.com",
+            "url": "https://dev.deskmood.kr",
             "description": "dev server"
         },
         {
-            "url": "https://example.com",
+            "url": "https://deskmood.kr",
             "description": "live server"
         },
         {
