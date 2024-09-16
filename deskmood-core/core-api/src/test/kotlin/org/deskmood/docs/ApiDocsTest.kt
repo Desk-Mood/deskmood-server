@@ -9,8 +9,10 @@ import io.wwan13.api.document.snippets.STRING
 import io.wwan13.api.document.snippets.isTypeOf
 import io.wwan13.api.document.snippets.whichMeans
 import io.wwan13.implmockmvc.MockMvcApiDocsTest
+import org.deskmood.controller.ApiControllerAdvice
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.ApplicationContext
 import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation
@@ -28,20 +30,23 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 )
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 abstract class ApiDocsTest(
-    private val targetController: Any,
     private val tag: String = DocumentSummary.DEFAULT_DOCUMENT_TAG
 ) : MockMvcApiDocsTest() {
+
+    @Autowired
+    lateinit var applicationContext: ApplicationContext
 
     @Autowired
     lateinit var restDocumentationContextProvider: RestDocumentationContextProvider
 
     override fun mockMvc(): MockMvc {
         return MockMvcBuilders
-            .standaloneSetup(targetController)
+            .standaloneSetup(applicationContext.getBean("${tag}Controller"))
             .alwaysDo<StandaloneMockMvcBuilder>(MockMvcResultHandlers.print())
             .apply<StandaloneMockMvcBuilder>(
                 MockMvcRestDocumentation.documentationConfiguration(restDocumentationContextProvider)
             )
+            .setControllerAdvice(ApiControllerAdvice())
             .build()
     }
 
