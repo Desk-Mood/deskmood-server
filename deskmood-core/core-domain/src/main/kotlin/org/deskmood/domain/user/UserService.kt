@@ -15,6 +15,7 @@ class UserService(
         profile: UserProfile
     ): Long {
         userValidator.validateIsAvailableNickname(profile.nickname)
+        userValidator.validateAlreadyRegistered(oauth)
         val user = User(oauth = oauth, profile = profile)
         return userAppender.append(user)
     }

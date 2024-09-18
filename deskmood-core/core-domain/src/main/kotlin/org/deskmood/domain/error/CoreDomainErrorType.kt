@@ -13,7 +13,7 @@ data class NoSuchData<T : Any, R>(
 ) : CoreDomainErrorType {
     override val httpStatusCode: HttpStatus = HttpStatus.BAD_REQUEST
     override val errorCode: String = "CORE_DOMAIN_400_1"
-    override val message: String = "찾으려는 데이터가 없습니다. ($from-$id)"
+    override val message: String = "찾으려는 데이터가 없습니다. (${from.simpleName}-$id)"
     override val logLevel: LogLevel = LogLevel.INFO
 }
 
@@ -25,7 +25,7 @@ data object AccessFailed : CoreDomainErrorType {
 }
 
 data class InvalidEnumValue(
-    val enumValues: List<String>
+    val enumValues: List<String> = listOf()
 ) : CoreDomainErrorType {
     override val httpStatusCode: HttpStatus = HttpStatus.BAD_REQUEST
     override val errorCode: String = "CORE_DOMAIN_400_2"
@@ -37,5 +37,12 @@ data object InUsedNickname : CoreDomainErrorType {
     override val httpStatusCode: HttpStatus = HttpStatus.BAD_REQUEST
     override val errorCode: String = "USER_400_0"
     override val message: String = "이미 사용중인 닉네임 입니다."
+    override val logLevel: LogLevel = LogLevel.INFO
+}
+
+data object UserAlreadyRegistered : CoreDomainErrorType {
+    override val httpStatusCode: HttpStatus = HttpStatus.BAD_REQUEST
+    override val errorCode: String = "USER_400_2"
+    override val message: String = "이미 등록된 유저입니다."
     override val logLevel: LogLevel = LogLevel.INFO
 }
