@@ -3,16 +3,19 @@ package org.deskmood.enity.user
 import org.deskmood.domain.auth.Oauth
 import org.deskmood.domain.user.User
 import org.deskmood.domain.user.UserRepository
+import org.deskmood.enity.base.JpqlExecutor
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 import kotlin.jvm.optionals.getOrNull
 
 @Repository
-@Transactional
+@Transactional(readOnly = true)
 class UserEntityRepository(
-    private val userJpaRepository: UserJpaRepository
+    private val userJpaRepository: UserJpaRepository,
+    private val jpqlExecutor: JpqlExecutor
 ) : UserRepository {
 
+    @Transactional
     override fun save(user: User): Long {
         val userEntity = user.toEntity()
         userJpaRepository.save(userEntity)
@@ -25,7 +28,7 @@ class UserEntityRepository(
     }
 
     override fun findByOauth(oauth: Oauth): User? {
-        val userEntity = userJpaRepository.findAll(0, 1) {
+        val userEntity = jpqlExecutor.find {
             select(
                 entity(UserEntity::class)
             ).from(
@@ -34,12 +37,12 @@ class UserEntityRepository(
                 path(UserEntity::platform).eq(oauth.platform),
                 path(UserEntity::email).eq(oauth.email)
             )
-        }.firstOrNull()
+        }
         return userEntity?.toCoreDomain()
     }
 
     override fun existsByNickname(nickname: String): Boolean {
-        val userEntity = userJpaRepository.findAll(0, 1) {
+        val userEntity = jpqlExecutor.find {
             select(
                 entity(UserEntity::class)
             ).from(
@@ -47,7 +50,7 @@ class UserEntityRepository(
             ).whereAnd(
                 path(UserEntity::nickname).eq(nickname)
             )
-        }.firstOrNull()
+        }
 
         return userEntity?.let { true } ?: false
     }
