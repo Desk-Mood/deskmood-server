@@ -1,6 +1,9 @@
 package org.deskmood.docs.user
 
 import io.mockk.every
+import io.mockk.just
+import io.mockk.runs
+import io.wwan13.api.document.snippets.ARRAY
 import io.wwan13.api.document.snippets.DATE
 import io.wwan13.api.document.snippets.ENUM
 import io.wwan13.api.document.snippets.NUMBER
@@ -23,6 +26,7 @@ class UserSignUpApiDocsTest : UserApiDocsTest() {
     @Test
     fun `사용자 회원 가입 API`() {
         every { userService.appendUser(any(), any()) } returns 1L
+        every { userJobService.appendAll(any()) } just runs
 
         val api = api.post("/api/v1/user") {
             requestBody(
@@ -32,7 +36,7 @@ class UserSignUpApiDocsTest : UserApiDocsTest() {
                     nickname = "kim",
                     birth = "2001-02-22",
                     gender = "남성",
-                    job = "개발자"
+                    jobIds = listOf(1, 2)
                 )
             )
         }
@@ -58,7 +62,7 @@ class UserSignUpApiDocsTest : UserApiDocsTest() {
                 "nickname" isTypeOf STRING whichMeans "닉네임",
                 "birth" isTypeOf DATE whichMeans "생일",
                 "gender" isTypeOf ENUM(Gender::class) whichMeans "성별 (남성/여성)",
-                "job" isTypeOf STRING whichMeans "직업",
+                "jobIds" isTypeOf ARRAY whichMeans "직업 아이디 리스트",
             )
             responseFields(
                 "data.id" isTypeOf NUMBER whichMeans "생성된 유저의 ID"

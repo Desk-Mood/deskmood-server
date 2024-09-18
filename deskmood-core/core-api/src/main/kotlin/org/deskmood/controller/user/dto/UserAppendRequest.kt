@@ -4,6 +4,7 @@ import org.deskmood.datetime.DateTimeUtil
 import org.deskmood.domain.auth.Oauth
 import org.deskmood.domain.auth.OauthPlatform
 import org.deskmood.domain.base.ValueEnum
+import org.deskmood.domain.job.UserJob
 import org.deskmood.domain.user.Gender
 import org.deskmood.domain.user.UserProfile
 import org.deskmood.error.InvalidNickname
@@ -15,7 +16,7 @@ data class UserAppendRequest(
     val nickname: String,
     val birth: String,
     val gender: String,
-    val job: String
+    val jobIds: List<Long>
 ) {
 
     init {
@@ -33,8 +34,13 @@ data class UserAppendRequest(
         return UserProfile(
             nickname,
             DateTimeUtil.toLocalDate(birth),
-            ValueEnum.resolve<Gender>(gender),
-            job
+            ValueEnum.resolve<Gender>(gender)
         )
+    }
+
+    fun toUserJobs(userId: Long): List<UserJob> {
+        return jobIds.map {
+            UserJob(userId = userId, jobId = it)
+        }
     }
 }

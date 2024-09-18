@@ -15,7 +15,7 @@ Content-Type: application/json
   "nickname": "김태완",
   "birth": "2001-02-22",
   "gender": "남성",
-  "job": "개발자"
+  "jobIds": [1, 2, 3]
 }
 
 ### get basic oauth2 profile
@@ -33,3 +33,6 @@ Content-Type: application/json
   "oauth2Code" : "4/0AQlEd8wN5doCsLW3nLS4Oxfao74V3UMNizdwmXoDus_ybhfvSAEckpQ8d1RnkwkWDYwu6g",
   "redirectUri" : "http://localhost:3000/auth"
 }
+
+### get all jobs
+GET {{core-api}}/api/v1/job

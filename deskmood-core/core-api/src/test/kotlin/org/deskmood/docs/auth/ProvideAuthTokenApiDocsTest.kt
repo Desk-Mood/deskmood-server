@@ -27,7 +27,7 @@ class ProvideAuthTokenApiDocsTest : AuthApiDocsTest() {
         every { oauthPlatformSelector.select(any()) } returns StubOauth2UserProfileReader()
         every { userService.readByOauth(any()) } returns User(
             1L, Timestamp(), UserRole.ROLE_USER, Oauth(OauthPlatform.GOOGLE, "ktw01023@gmail.com"),
-            UserProfile("kim", LocalDate.of(2001, 2, 22), Gender.MAN, "개발자")
+            UserProfile("kim", LocalDate.of(2001, 2, 22), Gender.MAN)
         )
         every { authTokenProvider.provide(any()) } returns AuthToken("access token", "refresh token")
 

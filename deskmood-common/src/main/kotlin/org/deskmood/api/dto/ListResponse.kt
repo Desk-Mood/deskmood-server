@@ -6,13 +6,13 @@ data class ListResponse<T>(
 ) {
 
     companion object {
-        fun <T> from(
+        fun <T, R> of(
             list: List<T>,
-            mapAction: () -> T
-        ): ListResponse<T> {
+            mapAction: (T) -> R
+        ): ListResponse<R> {
             return ListResponse(
                 list.size,
-                list.map { mapAction.invoke() }
+                list.map { mapAction.invoke(it) }
             )
         }
     }

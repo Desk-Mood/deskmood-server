@@ -31,8 +31,6 @@ class UserEntity(
     @Enumerated(EnumType.STRING)
     val gender: Gender,
 
-    var job: String,
-
     @Enumerated(EnumType.STRING)
     var role: UserRole,
 
