@@ -4,8 +4,8 @@ import io.mockk.every
 import io.wwan13.api.document.snippets.STRING
 import io.wwan13.api.document.snippets.hasValues
 import io.wwan13.api.document.snippets.isTypeOf
-import io.wwan13.api.document.snippets.provideMessage
 import io.wwan13.api.document.snippets.whichMeans
+import org.deskmood.docs.expectedErrorTypes
 import org.deskmood.domain.auth.OauthPlatform
 import org.deskmood.domain.error.NoSuchData
 import org.deskmood.domain.user.User
@@ -31,14 +31,11 @@ class Oauth2BasicUserProfileApiDocsTest : UserApiDocsTest() {
             containedEnums(
                 "platform" hasValues OauthPlatform.entries.map { it.value }
             )
-            expectedErrors(
-                org.deskmood.google.error.InvalidGrant.errorCode
-                    provideMessage org.deskmood.google.error.InvalidGrant.message,
-                org.deskmood.google.error.RedirectUriMismatch.errorCode
-                    provideMessage org.deskmood.google.error.RedirectUriMismatch.message,
-                org.deskmood.naver.error.InvalidGrant.errorCode
-                    provideMessage org.deskmood.naver.error.InvalidGrant.message,
-                NoSuchData(User::class, 1L).errorCode provideMessage NoSuchData(User::class, 1L).message
+            expectedErrorTypes(
+                org.deskmood.google.error.InvalidGrant,
+                org.deskmood.google.error.RedirectUriMismatch,
+                org.deskmood.naver.error.InvalidGrant,
+                NoSuchData(User::class, 1L)
             )
             queryParameters(
                 "platform" whichMeans "oauth2 플랫폼",

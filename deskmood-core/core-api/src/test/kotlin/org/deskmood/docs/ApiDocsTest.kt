@@ -1,7 +1,9 @@
 package org.deskmood.docs
 
 import io.mockk.junit5.MockKExtension
+import io.wwan13.api.document.ApiDocumentContextBuilder
 import io.wwan13.api.document.snippets.DATETIME
+import io.wwan13.api.document.snippets.DocumentError
 import io.wwan13.api.document.snippets.DocumentField
 import io.wwan13.api.document.snippets.DocumentSummary
 import io.wwan13.api.document.snippets.OBJECT
@@ -10,6 +12,7 @@ import io.wwan13.api.document.snippets.isTypeOf
 import io.wwan13.api.document.snippets.whichMeans
 import io.wwan13.implmockmvc.MockMvcApiDocsTest
 import org.deskmood.controller.ApiControllerAdvice
+import org.deskmood.error.ErrorType
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
@@ -21,6 +24,13 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
+
+fun ApiDocumentContextBuilder.expectedErrorTypes(vararg errorType: ErrorType) {
+    val errors = errorType.map {
+        DocumentError(it.errorCode, it.message)
+    }.toTypedArray()
+    this.expectedErrors(*errors)
+}
 
 @ExtendWith(
     value = [
@@ -60,5 +70,9 @@ abstract class ApiDocsTest(
             "timestamp" isTypeOf DATETIME whichMeans "응답 시간",
             "data" isTypeOf OBJECT whichMeans "응답 데이터",
         )
+    }
+
+    protected fun typeOf(errorType: ErrorType): DocumentError {
+        return DocumentError(errorType.errorCode, errorType.message)
     }
 }
