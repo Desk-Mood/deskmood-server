@@ -7,12 +7,13 @@ import io.wwan13.api.document.snippets.NUMBER
 import io.wwan13.api.document.snippets.STRING
 import io.wwan13.api.document.snippets.hasValues
 import io.wwan13.api.document.snippets.isTypeOf
-import io.wwan13.api.document.snippets.provideMessage
 import io.wwan13.api.document.snippets.whichMeans
 import org.deskmood.controller.user.dto.UserAppendRequest
+import org.deskmood.docs.expectedErrorTypes
 import org.deskmood.domain.auth.OauthPlatform
 import org.deskmood.domain.error.InUsedNickname
 import org.deskmood.domain.error.InvalidEnumValue
+import org.deskmood.domain.error.UserAlreadyRegistered
 import org.deskmood.domain.user.Gender
 import org.deskmood.error.InvalidNickname
 import org.junit.jupiter.api.Test
@@ -45,10 +46,11 @@ class UserSignUpApiDocsTest : UserApiDocsTest() {
                 "platform" hasValues OauthPlatform.entries.map { it.value },
                 "gender" hasValues Gender.entries.map { it.value }
             )
-            expectedErrors(
-                InUsedNickname.errorCode provideMessage InUsedNickname.message,
-                InvalidNickname.errorCode provideMessage InvalidNickname.message,
-                InvalidEnumValue(listOf()).errorCode provideMessage InvalidEnumValue(listOf()).message,
+            expectedErrorTypes(
+                InUsedNickname,
+                InvalidNickname,
+                UserAlreadyRegistered,
+                InvalidEnumValue()
             )
             requestFields(
                 "platform" isTypeOf ENUM(OauthPlatform::class) whichMeans "oauth2 플랫폼 (naver/google)",
