@@ -5,6 +5,7 @@ import org.deskmood.api.dto.BooleanResultResponse
 import org.deskmood.api.dto.IdResponse
 import org.deskmood.controller.user.dto.OauthUserProfileResponse
 import org.deskmood.controller.user.dto.UserAppendRequest
+import org.deskmood.domain.job.UserJobService
 import org.deskmood.domain.user.UserService
 import org.deskmood.external.oauth.OauthPlatformSelector
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/v1/user")
 class UserController(
     private val userService: UserService,
+    private val userJobService: UserJobService,
     private val oauthPlatformSelector: OauthPlatformSelector
 ) {
 
@@ -29,6 +31,7 @@ class UserController(
             request.toOauth(),
             request.toUserProfile()
         )
+        userJobService.appendAll(request.toUserJobs(userId))
         val response = IdResponse(userId)
 
         return ApiResponse.success(response)
