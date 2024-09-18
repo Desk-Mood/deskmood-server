@@ -6,5 +6,4 @@ data class UserProfile(
     val nickname: String,
     val birth: LocalDate,
     val gender: Gender,
-    val job: String
 )

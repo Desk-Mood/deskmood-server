@@ -10,7 +10,6 @@ fun User.toEntity(): UserEntity {
         nickname = profile.nickname,
         birth = profile.birth,
         gender = profile.gender,
-        job = profile.job,
         role = role,
         platform = oauth.platform,
         email = oauth.email,
@@ -30,7 +29,6 @@ fun UserEntity.toCoreDomain(): User {
             nickname = nickname,
             birth = birth,
             gender = gender,
-            job = job,
         )
     )
 }
