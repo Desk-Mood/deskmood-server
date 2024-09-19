@@ -16,5 +16,7 @@ class JobEntity(
     @Column(name = "job_id")
     val id: Long,
 
-    val value: String
+    val value: String,
+
+    val order: Int
 ) : BaseEntity()
