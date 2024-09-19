@@ -9,5 +9,5 @@ interface UserRepository {
 
     fun findByOauth(oauth: Oauth): User?
 
-    fun existsByNickname(nickname: String): Boolean
+    fun findByNickname(nickname: String): User?
 }
