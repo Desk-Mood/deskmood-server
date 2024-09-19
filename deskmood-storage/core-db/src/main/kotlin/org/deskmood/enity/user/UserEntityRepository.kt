@@ -41,7 +41,7 @@ class UserEntityRepository(
         return userEntity?.toCoreDomain()
     }
 
-    override fun existsByNickname(nickname: String): Boolean {
+    override fun findByNickname(nickname: String): User? {
         val userEntity = jpqlExecutor.find {
             select(
                 entity(UserEntity::class)
@@ -52,6 +52,6 @@ class UserEntityRepository(
             )
         }
 
-        return userEntity?.let { true } ?: false
+        return userEntity?.toCoreDomain()
     }
 }

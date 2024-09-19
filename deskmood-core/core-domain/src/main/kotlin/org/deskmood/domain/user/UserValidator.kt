@@ -12,7 +12,7 @@ class UserValidator(
 ) {
 
     fun validateIsAvailableNickname(nickname: String) {
-        if (userRepository.existsByNickname(nickname)) {
+        userRepository.findByNickname(nickname)?.let {
             throw DeskmoodException(InUsedNickname)
         }
     }

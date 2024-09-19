@@ -16,6 +16,6 @@ class UserReader(
     }
 
     fun isInUseNickname(nickname: String): Boolean {
-        return userRepository.existsByNickname(nickname)
+        return userRepository.findByNickname(nickname)?.let { true } ?: false
     }
 }
