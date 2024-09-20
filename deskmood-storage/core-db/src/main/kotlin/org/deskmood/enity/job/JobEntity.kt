@@ -18,5 +18,5 @@ class JobEntity(
 
     val value: String,
 
-    val order: Int
+    val sortOrder: Int
 ) : BaseEntity()

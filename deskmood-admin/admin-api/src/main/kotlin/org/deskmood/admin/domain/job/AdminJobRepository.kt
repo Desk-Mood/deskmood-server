@@ -23,7 +23,7 @@ class AdminJobRepository(
             ).from(
                 entity(AdminJob::class)
             ).orderBy(
-                path(AdminJob::order).asc()
+                path(AdminJob::sortOrder).asc()
             )
         }
     }

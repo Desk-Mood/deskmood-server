@@ -28,7 +28,7 @@ enum class AdminDefaultJob(
     fun toAdminJob(): AdminJob {
         return AdminJob(
             value = value,
-            order = order
+            sortOrder = order
         )
     }
 }

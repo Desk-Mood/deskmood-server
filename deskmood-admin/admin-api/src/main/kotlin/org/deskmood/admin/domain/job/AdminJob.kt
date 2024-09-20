@@ -18,5 +18,5 @@ class AdminJob(
 
     var value: String,
 
-    var order: Int
+    var sortOrder: Int
 ) : AdminBaseEntity()

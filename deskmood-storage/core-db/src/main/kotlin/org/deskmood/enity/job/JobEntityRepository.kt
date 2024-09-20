@@ -26,7 +26,7 @@ class JobEntityRepository(
             ).from(
                 entity(JobEntity::class)
             ).orderBy(
-                path(JobEntity::order).asc()
+                path(JobEntity::sortOrder).asc()
             )
         }
         val jobs = jobJpaRepository.findAll()

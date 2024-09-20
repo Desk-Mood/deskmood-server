@@ -9,7 +9,7 @@ data class AdminJobResponse(
 ) {
     companion object {
         fun from(job: AdminJob): AdminJobResponse {
-            return AdminJobResponse(job.id, job.value, job.order)
+            return AdminJobResponse(job.id, job.value, job.sortOrder)
         }
     }
 }
