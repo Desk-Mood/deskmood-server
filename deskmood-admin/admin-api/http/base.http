@@ -1,0 +1,2 @@
+### health checking api
+GET {{admin-api}}/api/admin/health
