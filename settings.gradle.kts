@@ -4,6 +4,9 @@ include("deskmood-core")
 include("deskmood-core:core-api")
 include("deskmood-core:core-domain")
 
+include("deskmood-admin")
+include("deskmood-admin:admin-api")
+
 include("deskmood-storage:core-db")
 
 include("deskmood-clients")

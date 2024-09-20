@@ -11,6 +11,8 @@ dependencies {
     implementation(project(":deskmood-support:logging"))
     implementation(project(":deskmood-support:monitoring"))
 
+    runtimeOnly(project(":deskmood-admin:admin-api"))
+
     // web
     implementation("org.springframework.boot:spring-boot-starter-web")
 

@@ -1,0 +1,11 @@
+### health checking api
+GET {{admin-api}}/api/admin/health
+
+### setup default jobs
+POST {{admin-api}}/api/admin/v1/job/setup
+
+### read all jobs
+GET {{admin-api}}/api/admin/v1/job
+
+### remove all jobs
+DELETE {{admin-api}}/api/admin/v1/job

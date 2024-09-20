@@ -1,6 +1,6 @@
-package org.deskmood.enity.job
+package org.deskmood.admin.domain.job
 
-import org.deskmood.enity.base.BaseEntity
+import org.deskmood.admin.domain.base.AdminBaseEntity
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -10,13 +10,13 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "job")
-class JobEntity(
+class AdminJob(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "job_id")
-    val id: Long,
+    var id: Long = 0,
 
-    val value: String,
+    var value: String,
 
-    val sortOrder: Int
-) : BaseEntity()
+    var sortOrder: Int
+) : AdminBaseEntity()

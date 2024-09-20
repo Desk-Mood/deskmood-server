@@ -15,8 +15,7 @@ class CorsConfig(
         val allowOrigins = when (activeProfile) {
             "prod" -> PROD_ALLOW_ORIGINS
             "dev" -> DEV_ALLOW_ORIGINS
-            "local" -> LOCAL_ALLOW_ORIGINS
-            else -> throw IllegalStateException("Invalid Profile")
+            else -> LOCAL_ALLOW_ORIGINS
         }
 
         registry.apply {
