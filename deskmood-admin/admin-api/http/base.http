@@ -8,4 +8,4 @@ POST {{admin-api}}/api/admin/v1/job/setup
 GET {{admin-api}}/api/admin/v1/job
 
 ### remove all jobs
-POST {{admin-api}}/api/admin/v1/job
+DELETE {{admin-api}}/api/admin/v1/job
