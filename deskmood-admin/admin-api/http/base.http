@@ -9,3 +9,6 @@ GET {{admin-api}}/api/admin/v1/job
 
 ### remove all jobs
 DELETE {{admin-api}}/api/admin/v1/job
+
+### relocation orders
+PATCH {{admin-api}}/api/admin/v1/job/108/relocation/15
