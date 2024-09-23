@@ -23,6 +23,7 @@ dependencies {
     implementation("com.github.wwan13:spring-request-logger:0.0.7")
 
     // security
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("com.github.wwan13:winter-security:0.0.10")
 
     // api docs

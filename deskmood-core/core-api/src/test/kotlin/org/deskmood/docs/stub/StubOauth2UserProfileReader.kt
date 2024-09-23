@@ -1,4 +1,4 @@
-package org.deskmood.docs.user
+package org.deskmood.docs.stub
 
 import org.deskmood.domain.user.Gender
 import org.deskmood.external.oauth.OauthUserProfile

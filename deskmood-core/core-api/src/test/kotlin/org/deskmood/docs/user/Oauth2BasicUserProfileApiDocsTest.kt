@@ -6,6 +6,7 @@ import io.wwan13.api.document.snippets.hasValues
 import io.wwan13.api.document.snippets.isTypeOf
 import io.wwan13.api.document.snippets.whichMeans
 import org.deskmood.docs.expectedErrorTypes
+import org.deskmood.docs.stub.StubOauth2UserProfileReader
 import org.deskmood.domain.auth.OauthPlatform
 import org.deskmood.domain.error.NoSuchData
 import org.deskmood.domain.user.User

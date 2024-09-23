@@ -14,8 +14,8 @@ enum class Gender(
     companion object {
         fun resolve(value: String): Gender {
             return when (value) {
-                "male", "m" -> MAN
-                "female", "f" -> WOMAN
+                "male", "M", "m" -> MAN
+                "female", "F", "f", "W", "w" -> WOMAN
                 else -> throw DeskmoodException(InvalidEnumValue(entries.map { it.value }))
             }
         }
