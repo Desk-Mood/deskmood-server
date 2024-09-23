@@ -8,7 +8,7 @@ import io.wwan13.api.document.snippets.whichMeans
 import org.deskmood.auth.AuthToken
 import org.deskmood.controller.auth.dto.LoginRequest
 import org.deskmood.docs.expectedErrorTypes
-import org.deskmood.docs.user.StubOauth2UserProfileReader
+import org.deskmood.docs.stub.StubOauth2UserProfileReader
 import org.deskmood.domain.auth.Oauth
 import org.deskmood.domain.auth.OauthPlatform
 import org.deskmood.domain.base.Timestamp

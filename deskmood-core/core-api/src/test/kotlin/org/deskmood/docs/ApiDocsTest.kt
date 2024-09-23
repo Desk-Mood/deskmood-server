@@ -12,10 +12,12 @@ import io.wwan13.api.document.snippets.isTypeOf
 import io.wwan13.api.document.snippets.whichMeans
 import io.wwan13.implmockmvc.MockMvcApiDocsTest
 import org.deskmood.controller.ApiControllerAdvice
+import org.deskmood.docs.stub.StubUserIdResolver
 import org.deskmood.error.ErrorType
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationContext
+import org.springframework.context.annotation.Import
 import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation
@@ -39,6 +41,7 @@ fun ApiDocumentContextBuilder.expectedErrorTypes(vararg errorType: ErrorType) {
     ]
 )
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
+@Import(TestConfiguration::class)
 abstract class ApiDocsTest(
     private val tag: String = DocumentSummary.DEFAULT_DOCUMENT_TAG
 ) : MockMvcApiDocsTest() {
@@ -57,6 +60,7 @@ abstract class ApiDocsTest(
                 MockMvcRestDocumentation.documentationConfiguration(restDocumentationContextProvider)
             )
             .setControllerAdvice(ApiControllerAdvice())
+            .setCustomArgumentResolvers(StubUserIdResolver())
             .build()
     }
 
