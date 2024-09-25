@@ -40,9 +40,24 @@ class AuthConfig(
         http.exceptionHandling()
             .accessDeniedHandler(forbiddenHandler)
             .authenticationEntryPoint(unauthorizedHandler)
-
         http
             .authorizeRequests()
+            .antMatchers("/api/admin/**")
+            .hasRole("ADMIN")
+            .antMatchers(
+                "/api/v1/auth/**",
+
+                "/api/v1/user",
+                "/api/v1/user/nickname/available",
+                "/api/v1/user/oauth2/profile",
+
+                "/api/v1/job",
+            )
+            .permitAll()
+            .antMatchers(
+                "/api/**"
+            )
+            .authenticated()
             .anyRequest().permitAll()
 
         return http.build()

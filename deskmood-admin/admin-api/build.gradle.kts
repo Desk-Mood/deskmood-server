@@ -16,6 +16,7 @@ dependencies {
     compileOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     // security
+    compileOnly("org.springframework.security:spring-security-core")
     compileOnly("com.github.wwan13:winter-security:0.0.10")
 
     // jpa
