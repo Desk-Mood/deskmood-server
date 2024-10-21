@@ -18,10 +18,10 @@ class S3Client(
 ) {
 
     fun providePreSignedUrl(
-        directory: String,
+        fileType: FileType,
         fileName: String
     ): String {
-        val filePath = "$directory/${provideEncodedFileName(fileName)}"
+        val filePath = "${fileType.value}/${provideEncodedFileName(fileName)}"
         val request = GeneratePresignedUrlRequest(s3Properties.bucket, filePath).apply {
             withMethod(HttpMethod.PUT)
             withExpiration(calculateExpiration())
@@ -43,6 +43,10 @@ class S3Client(
         val fileNameWithDate = "$fileName-${DateTimePicker.now()}"
         val encoded = Base64.getEncoder().encodeToString(fileNameWithDate.toByteArray())
 
-        return encoded
+        return "$encoded.${extractFileExtension(fileName)}"
+    }
+
+    private fun extractFileExtension(fileName: String): String {
+        return fileName.split(".").last()
     }
 }
