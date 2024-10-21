@@ -51,6 +51,6 @@ class S3Client(
     }
 
     fun parsePreSignedUrl(preSignedUrl: String): String {
-        return preSignedUrl.split("?").first();
+        return preSignedUrl.split("?").first()
     }
 }
