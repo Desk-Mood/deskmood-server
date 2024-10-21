@@ -7,6 +7,7 @@ spring:
       - monitoring
       - google-client
       - naver-client
+      - s3-client
   mvc:
     throw-exception-if-no-handler-found: true
   web:

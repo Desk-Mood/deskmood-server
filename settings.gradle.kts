@@ -13,6 +13,7 @@ include("deskmood-clients")
 include("deskmood-clients:kakao-client")
 include("deskmood-clients:naver-client")
 include("deskmood-clients:google-client")
+include("deskmood-clients:s3-client")
 
 include("deskmood-support")
 include("deskmood-support:monitoring")
