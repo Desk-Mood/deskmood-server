@@ -8,6 +8,7 @@ dependencies {
     implementation(project(":deskmood-storage:core-db"))
     implementation(project(":deskmood-clients:google-client"))
     implementation(project(":deskmood-clients:naver-client"))
+    implementation(project(":deskmood-clients:s3-client"))
     implementation(project(":deskmood-support:logging"))
     implementation(project(":deskmood-support:monitoring"))
 
