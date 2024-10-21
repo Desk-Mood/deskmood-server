@@ -49,4 +49,8 @@ class S3Client(
     private fun extractFileExtension(fileName: String): String {
         return fileName.split(".").last()
     }
+
+    fun parsePreSignedUrl(preSignedUrl: String): String {
+        return preSignedUrl.split("?").first()
+    }
 }
